@@ -2,9 +2,10 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.UUID;
 
 public class Order {
-	private int order_code;
+	private String order_code;
 	private Date date;
 	private Date time;
 	private Client id_client;
@@ -15,23 +16,15 @@ public class Order {
 	public Order() {
 	}
 
-	public Order(int order_code, Date date, Date time, Client id_client, Restaurant nit_restaurant,
+	public Order(Date date, Date time, Client id_client, Restaurant nit_restaurant,
 			ArrayList<Product> products, String status) {
-		this.order_code = order_code;
+		this.order_code = UUID.randomUUID().toString();
 		this.date = date;
 		this.time = time;
 		this.id_client = id_client;
 		this.nit_restaurant = nit_restaurant;
 		this.products = products;
 		this.status = status;
-	}
-
-	public int getOrder_code() {
-		return order_code;
-	}
-
-	public void setOrder_code(int order_code) {
-		this.order_code = order_code;
 	}
 
 	public Date getDate() {
@@ -83,18 +76,18 @@ public class Order {
 	}
 	
 	
-	public static Order createOrder(int order_code, Date date, Date time, Client id_client, 
+	/*public static Order createOrder(int order_code, Date date, Date time, Client id_client,
 			Restaurant nit_restaurant, ArrayList<Product> products, String status, 
 			ArrayList<Order> orders) {
 		Order o = new Order(order_code, date, time, id_client, nit_restaurant, products, status);
 		orders.add(o);
 		return o;
-	}
+	}*/
 	
-	public static Order getOrder(int order_code,ArrayList<Order> orders) {
+	public static Order getOrder(String order_code,ArrayList<Order> orders) {
 		Order o = new Order();
 		for (Order my_order : orders) {
-			if (my_order.order_code==order_code) {
+			if (my_order.order_code.equals(order_code)) {
 				o = my_order;
 				return o;
 			}
@@ -102,7 +95,7 @@ public class Order {
 		return o;
 	}
 	
-	public static Order updateOrder(int order_code, Date date, Date time, Client id_client, 
+	public static Order updateOrder(String order_code, Date date, Date time, Client id_client,
 			Restaurant nit_restaurant, ArrayList<Product> products, String status, 
 			ArrayList<Order> orders) {
 		Order o = getOrder(order_code, orders);

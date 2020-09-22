@@ -3,31 +3,45 @@ package ui;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import model.Client;
 import model.Restaurant;
 
 public class Main {
 
 	public static void main(String[] args) {
-		Main main = new Main();
-		ArrayList<Restaurant> restaurantes = new ArrayList<Restaurant>();
-		Scanner sc = new Scanner(System.in);
-		System.out.print("Ingresa el nit del restaurante: \n");
-		String nit = sc.next();
-		System.out.print("Ingresa el nombre del restaurante: \n");
-		String name = sc.next();
-		System.out.print("Ingresa el nombre del administrador del restaurante: \n");
-		String admin_name = sc.next();
 
-		Restaurant r = Restaurant.createRestaurant(nit, name, admin_name, restaurantes);
-		System.out.println("Valor de restaurantes: " + restaurantes);
-		
-		System.out.print("Ingresa el nit que quiere buscar: \n");
-		String nit_buscar = sc.next();
-		
-		
-		Restaurant my_restaurante_encontrado = Restaurant.getRestaurant(nit_buscar, restaurantes);
-		System.out.println("Encontro este nombre: " + my_restaurante_encontrado.getName());
+		System.out.println("Hola mundo");
+		Restaurant restaurant = new Restaurant("VDV","CDVD","VDVD");
+		Client client1 = new Client("TI", "123", "LUIS", "ARIAS", "CLL 12", "123");
+		Client client2 = new Client("TI", "123", "LUISA", "ARIAS", "CLL 12", "123");
+		Client client3 = new Client("TI", "123", "LUISO", "ARIAS", "CLL 12", "123");
+		Client client4 = new Client("TI", "123", "LUIS", "LOPEZ", "CLL 12", "123");
+		Client client5 = new Client("TI", "123", "LUIS", "QUIJANO", "CLL 12", "123");
+		Client client6 = new Client("TI", "123", "LUIS", "ANGULO", "CLL 12", "123");
+		Client client7 = new Client("TI", "123", "LUIS", "VARGAS", "CLL 12", "123");
+		Client client8 = new Client("TI", "123", "LUIS", "GUARIN", "CLL 12", "123");
+		Client client9 = new Client("TI", "123", "LUIS", "ARBOLEDA", "CLL 12", "123");
+		Client client10 = new Client("TI", "123", "LUIS", "MORALES", "CLL 12", "123");
+		Client client11 = new Client("TI", "123", "LUIS", "DELGADO", "CLL 12", "123");
+		Client client12 = new Client("TI", "123", "LUIS", "AYALA", "CLL 12", "123");
 
+		restaurant.addClients(client4);
+		restaurant.addClients(client1);
+		restaurant.addClients(client6);
+		restaurant.addClients(client3);
+		restaurant.addClients(client4);
+		restaurant.addClients(client2);
+		restaurant.addClients(client5);
+		restaurant.addClients(client12);
+		restaurant.addClients(client7);
+		restaurant.addClients(client8);
+		restaurant.addClients(client10);
+		restaurant.addClients(client11);
+		restaurant.addClients(client9);
+		restaurant.addClients(client7);
+
+		for (int i = 0; i<restaurant.getClients().size(); i++){
+			System.out.println(""+restaurant.getClients().get(i).getLast_name()+" "+restaurant.getClients().get(i).getName());
+		}
 	}
-
 }

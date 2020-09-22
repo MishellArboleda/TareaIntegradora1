@@ -6,6 +6,9 @@ public class Restaurant {
 	private String nit;
 	private String name;
 	private String admin_name;
+	private ArrayList<Product> products;
+	private ArrayList<Client> clients;
+	private ArrayList<Order> orders;
 
 	public Restaurant() {
 	}
@@ -14,6 +17,9 @@ public class Restaurant {
 		this.nit = nit;
 		this.name = name;
 		this.admin_name = admin_name;
+		this.products = new ArrayList<>();
+		this.clients = new ArrayList<>();
+		this.orders = new ArrayList<>();
 	}
 
 	public String getNit() {
@@ -40,12 +46,12 @@ public class Restaurant {
 		this.admin_name = admin_name;
 	}
 
-	public static Restaurant createRestaurant(String nit, String name, String admin_name,
+	/*public static Restaurant createRestaurant(String nit, String name, String admin_name,
 			ArrayList<Restaurant> restaurants) {
 		Restaurant restaurant = new Restaurant(nit, name, admin_name);
 		restaurants.add(restaurant);
 		return restaurant;
-	}
+	}*/
 
 	public static Restaurant getRestaurant(String nit, ArrayList<Restaurant> restaurants) {
 		Restaurant r = new Restaurant();
@@ -63,5 +69,35 @@ public class Restaurant {
 		r.setName(name);
 		r.setAdmin_name(admin_name);
 		return r;
+	}
+
+	public ArrayList<Product> getProducts() {
+		return products;
+	}
+
+	public ArrayList<Client> getClients() {
+		return clients;
+	}
+
+	public ArrayList<Order> getOrders() {
+		return orders;
+	}
+
+	public void addClients(Client client){
+		if(clients.size() == 0){
+			clients.add(client);
+		}else{
+			ClientComparator  clientComparator = new ClientComparator();
+			int pos = 0;
+			for(int i = 0; i<clients.size();i++){
+				int indicator = clientComparator.compare(client,clients.get(i));
+				if(indicator == 1){
+
+				}else if(indicator == -1 || indicator == 0) {
+					pos = i+1;
+				}
+			}
+			clients.add(pos,client);
+		}
 	}
 }

@@ -5,6 +5,8 @@ import java.util.ArrayList;
 public class Client {
 	private String document_type;
 	private String id;
+	private String name;
+	private String last_name;
 	private String full_name;
 	private String addres;
 	private String phone_number;
@@ -12,10 +14,12 @@ public class Client {
 	public Client() {
 	}
 
-	public Client(String document_type, String id, String full_name, String addres, String phone_number) {
+	public Client(String document_type, String id, String name, String last_name, String addres, String phone_number) {
 		this.document_type = document_type;
 		this.id = id;
-		this.full_name = full_name;
+		this.name = name;
+		this.last_name = last_name;
+		this.full_name = this.name + " " + this.last_name;
 		this.addres = addres;
 		this.phone_number = phone_number;
 	}
@@ -40,8 +44,8 @@ public class Client {
 		return full_name;
 	}
 
-	public void setFull_name(String full_name) {
-		this.full_name = full_name;
+	public void setFull_name(String name, String last_name) {
+		this.full_name = this.name + " " + this.last_name;
 	}
 
 	public String getAddres() {
@@ -60,13 +64,23 @@ public class Client {
 		this.phone_number = phone_number;
 	}
 
-	public static Client createClient(String document_type, String id, String full_name, String addres,
-			String phone_number, ArrayList<Client> clients) {
-		Client c = new Client(document_type, id, full_name, addres, phone_number);
-		clients.add(c);
-		return c;
+	public String getName() {
+		return name;
 	}
 
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getLast_name() {
+		return last_name;
+	}
+
+	public void setLast_name(String last_name) {
+		this.last_name = last_name;
+	}
+
+	
 	public static Client getClient(String id, ArrayList<Client> clients) {
 		Client c = new Client();
 		for (Client my_client : clients) {
@@ -78,13 +92,21 @@ public class Client {
 		return c;
 	}
 
-	public static Client updateClient(String document_type, String id, String full_name, String addres,
+	public static Client updateClient(String document_type, String id, String name, String last_name, String addres,
 			String phone_number, ArrayList<Client> clients) {
 		Client c = getClient(id, clients);
 		c.setDocument_type(document_type);
-		c.setFull_name(full_name);
+		c.setName(name);
+		c.setLast_name(last_name);
+		c.setFull_name(name, last_name);
 		c.setAddres(addres);
 		c.setPhone_number(phone_number);
 		return c;
 	}
-}
+
+	public static ArrayList<Client> sortingClient(ArrayList<Client> clients, Client c) {
+		return clients;
+	}
+		}
+
+	 

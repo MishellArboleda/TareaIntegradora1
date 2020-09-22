@@ -51,12 +51,12 @@ public class Product {
 		this.cost = cost;
 	}
 	
-	public static Product createProduct (String cod, String name, String description, 
+	/*public static Product createProduct (String cod, String name, String description,
 			double cost, ArrayList<Product> products) {
 		Product p = new Product(cod, name, description, cost);
 		products.add(p);
 	    return p;
-	}
+	}*/
 	
 	public static Product getProduct(String cod, ArrayList<Product> products){
 		Product p = new Product();
