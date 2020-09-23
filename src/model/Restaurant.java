@@ -7,8 +7,8 @@ public class Restaurant {
 	private String name;
 	private String admin_name;
 	private ArrayList<Product> products;
-	private ArrayList<Client> clients;
 	private ArrayList<Order> orders;
+	private ArrayList<Client> clients;
 
 	public Restaurant() {
 	}
@@ -18,7 +18,6 @@ public class Restaurant {
 		this.name = name;
 		this.admin_name = admin_name;
 		this.products = new ArrayList<>();
-		this.clients = new ArrayList<>();
 		this.orders = new ArrayList<>();
 	}
 
@@ -45,14 +44,7 @@ public class Restaurant {
 	public void setAdmin_name(String admin_name) {
 		this.admin_name = admin_name;
 	}
-
-	/*public static Restaurant createRestaurant(String nit, String name, String admin_name,
-			ArrayList<Restaurant> restaurants) {
-		Restaurant restaurant = new Restaurant(nit, name, admin_name);
-		restaurants.add(restaurant);
-		return restaurant;
-	}*/
-
+	
 	public static Restaurant getRestaurant(String nit, ArrayList<Restaurant> restaurants) {
 		Restaurant r = new Restaurant();
 		for (Restaurant restaurant : restaurants) {

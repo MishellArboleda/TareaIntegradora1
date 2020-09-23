@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import model.Client;
+import model.Order;
 import model.Restaurant;
 
 public class Main {
@@ -43,5 +44,8 @@ public class Main {
 		for (int i = 0; i<restaurant.getClients().size(); i++){
 			System.out.println(""+restaurant.getClients().get(i).getLast_name()+" "+restaurant.getClients().get(i).getName());
 		}
+		
+		
 	}
+	
 }

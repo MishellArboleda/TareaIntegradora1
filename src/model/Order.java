@@ -11,20 +11,20 @@ public class Order {
 	private Client id_client;
 	private Restaurant nit_restaurant;
 	private ArrayList<Product> products;
-	private String status;
+	private Status status;
 	
 	public Order() {
 	}
 
 	public Order(Date date, Date time, Client id_client, Restaurant nit_restaurant,
-			ArrayList<Product> products, String status) {
+			ArrayList<Product> products) {
 		this.order_code = UUID.randomUUID().toString();
 		this.date = date;
 		this.time = time;
 		this.id_client = id_client;
 		this.nit_restaurant = nit_restaurant;
 		this.products = products;
-		this.status = status;
+		status = Status.REQUESTED;
 	}
 
 	public Date getDate() {
@@ -67,23 +67,26 @@ public class Order {
 		this.products = products;
 	}
 
-	public String getStatus() {
+	public Status getStatus() {
 		return status;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setStatus(Status status) {
+		if(this.status == Status.IN_PROCESS) {
+			if (status != Status.DELIVERED && status != Status.SENT) {
+				this.status = status;
+			}
+		} else if (this.status == Status.SENT) {
+			if (status != Status.REQUESTED && status != Status.IN_PROCESS) {
+				this.status = status;
+			}
+		} else if (this.status == Status.DELIVERED) {
+
+		} else {
+			this.status = status;
+		}
 	}
-	
-	
-	/*public static Order createOrder(int order_code, Date date, Date time, Client id_client,
-			Restaurant nit_restaurant, ArrayList<Product> products, String status, 
-			ArrayList<Order> orders) {
-		Order o = new Order(order_code, date, time, id_client, nit_restaurant, products, status);
-		orders.add(o);
-		return o;
-	}*/
-	
+
 	public static Order getOrder(String order_code,ArrayList<Order> orders) {
 		Order o = new Order();
 		for (Order my_order : orders) {
@@ -96,7 +99,7 @@ public class Order {
 	}
 	
 	public static Order updateOrder(String order_code, Date date, Date time, Client id_client,
-			Restaurant nit_restaurant, ArrayList<Product> products, String status, 
+			Restaurant nit_restaurant, ArrayList<Product> products, Status status, 
 			ArrayList<Order> orders) {
 		Order o = getOrder(order_code, orders);
 		o.setDate(date);
@@ -108,6 +111,4 @@ public class Order {
 		return o;
 		
 	}
-	
-
 }

@@ -50,14 +50,7 @@ public class Product {
 	public void setCost(double cost) {
 		this.cost = cost;
 	}
-	
-	/*public static Product createProduct (String cod, String name, String description,
-			double cost, ArrayList<Product> products) {
-		Product p = new Product(cod, name, description, cost);
-		products.add(p);
-	    return p;
-	}*/
-	
+		
 	public static Product getProduct(String cod, ArrayList<Product> products){
 		Product p = new Product();
 		for (Product product : products) {
