@@ -15,10 +15,11 @@ public class Order {
 	
 	public Order() {
 	}
+	
 
-	public Order(Date date, Date time, Client id_client, Restaurant nit_restaurant,
+	public Order(String code,Date date, Date time, Client id_client, Restaurant nit_restaurant,
 			ArrayList<Product> products) {
-		this.order_code = UUID.randomUUID().toString();
+		this.order_code = code;
 		this.date = date;
 		this.time = time;
 		this.id_client = id_client;
@@ -70,6 +71,11 @@ public class Order {
 	public Status getStatus() {
 		return status;
 	}
+	
+	public String getOrder_code() {
+		return order_code;
+	}
+	
 
 	public void setStatus(Status status) {
 		if(this.status == Status.IN_PROCESS) {
