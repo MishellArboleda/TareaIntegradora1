@@ -1,11 +1,14 @@
 package ui;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 
 import model.Client;
 import model.Order;
+import model.Product;
 import model.Restaurant;
+import model.Status;
 
 public class Main {
 
@@ -44,6 +47,17 @@ public class Main {
 		for (int i = 0; i<restaurant.getClients().size(); i++){
 			System.out.println(""+restaurant.getClients().get(i).getLast_name()+" "+restaurant.getClients().get(i).getName());
 		}
+		
+		ArrayList<Product> products = new ArrayList<>();
+		Product product = new Product("vve","fvefvr","fevf",73653);
+		products.add(product);
+		Date date = new Date();
+		Order o = new Order(date,date,restaurant.getClients().get(1),restaurant, products);
+		System.out.println("el estado del producto es "+o.getStatus() );
+		o.setStatus(Status.DELIVERED);
+		System.out.println("el estado del producto es " +o.getStatus());
+		o.setStatus(Status.IN_PROCESS);
+		System.out.println("el estado del producto es " +o.getStatus());
 		
 		
 	}
