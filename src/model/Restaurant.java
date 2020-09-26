@@ -265,7 +265,7 @@ public class Restaurant {
 			int cual = i;
 			for( int j = i + 1; j < clientsByNumbers.size(); j++ )
 			{
-				if( clientsByNumbers.get(j).getPhone_number().compareTo(clientsByNumbers.get(i).getPhone_number())== -1){
+				if( clientsByNumbers.get(j).getPhone_number().compareTo(clientsByNumbers.get(i).getPhone_number())== 1){
 					clientsByNumbers.add(j,menor); //menor = arreglo[ j ];
 					cual = j;
 				}
@@ -277,18 +277,6 @@ public class Restaurant {
 		return clientsByNumbers;
 	}
 
-
-	
-	
-	
-	//Restaurant temp = restaurantByName.get(j);             //int temp = arreglo[ j ];
-	//restaurantByName.add(j,restaurantByName.get(j+1));     //arreglo[ j ] = arreglo[ j + 1 ];
-	//restaurantByName.add(j+1,temp);                        //arreglo[ j + 1 ] = temp; 
-	
-	
-	
-	
-	
 }
 
 

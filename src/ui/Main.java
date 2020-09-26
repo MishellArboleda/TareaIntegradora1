@@ -12,82 +12,45 @@ import model.Restaurant;
 import model.RestaurantAssociation;
 import model.Status;
 
+
 public class Main {
-
+	public static final int EXIT_OPTION = 16;
 	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int option;
+		do {
+			System.out.println("Menu");
+			System.out.println("1. Register restaurant");
+			System.out.println("2. Register products");
+			System.out.println("3. Client registration");
+			System.out.println("4. Order record");
+			System.out.println("5. Update the details of a restaurant");
+			System.out.println("6. Update the data of a product");
+			System.out.println("7. Update the data of a client");
+			System.out.println("8. Update the data of a order");
+			System.out.println("9. Change the status of an order");
+			System.out.println("10. Verify that all the products in the order belong to the restaurant that the customer chose");
+			System.out.println("11. Save Elements");
+			System.out.println("12. Load Elements");
+			System.out.println("13. List all restaurants on the screen");
+			System.out.println("14. List all clients on screen");
+			System.out.println("15. Find a client");
+			System.out.println("16. Exit");
+			System.out.print("Enter the option: ");
+			option = Integer.parseInt(sc.nextLine());
+			switch(option) {
+			case 1:
+				System.out.println("Enter the details to register a restaurant:"  );
+				System.out.print("Nit: ");
+				String nit = sc.nextLine();
+				System.out.println("Name: "); 
+				String name = sc.nextLine();
+			    System.out.println("Administrator name: ");
+			    String admin_name = sc.nextLine();
+			    System.out.println("The restaurant has been successfully registered: " );
+			    break;
 
-		System.out.println("Hola mundo");
-		Restaurant restaurant = new Restaurant("VDV","CDVD","VDVD");
-		Client client1 = new Client("TI", "123", "LUIS", "ARIAS", "CLL 12", "123");
-		Client client2 = new Client("TI", "123", "LUISA", "ARIAS", "CLL 12", "123");
-		Client client3 = new Client("TI", "123", "LUISO", "ARIAS", "CLL 12", "123");
-		Client client4 = new Client("TI", "123", "LUIS", "LOPEZ", "CLL 12", "123");
-		Client client5 = new Client("TI", "123", "LUIS", "QUIJANO", "CLL 12", "123");
-		Client client6 = new Client("TI", "123", "LUIS", "ANGULO", "CLL 12", "123");
-		Client client7 = new Client("TI", "123", "LUIS", "VARGAS", "CLL 12", "123");
-		Client client8 = new Client("TI", "123", "LUIS", "GUARIN", "CLL 12", "123");
-		Client client9 = new Client("TI", "123", "LUIS", "ARBOLEDA", "CLL 12", "123");
-		Client client10 = new Client("TI", "123", "LUIS", "MORALES", "CLL 12", "123");
-		Client client11 = new Client("TI", "123", "LUIS", "DELGADO", "CLL 12", "123");
-		Client client12 = new Client("TI", "123", "LUIS", "AYALA", "CLL 12", "123");
-
-		restaurant.addClients(client4);
-		restaurant.addClients(client1);
-		restaurant.addClients(client6);
-		restaurant.addClients(client3);
-		restaurant.addClients(client4);
-		restaurant.addClients(client2);
-		restaurant.addClients(client5);
-		restaurant.addClients(client12);
-		restaurant.addClients(client7);
-		restaurant.addClients(client8);
-		restaurant.addClients(client10);
-		restaurant.addClients(client11);
-		restaurant.addClients(client9);
-		restaurant.addClients(client7);
-
-		for (int i = 0; i<restaurant.getClients().size(); i++){
-			System.out.println(""+restaurant.getClients().get(i).getLast_name()+" "+restaurant.getClients().get(i).getName());
-		}
-		
-		ArrayList<Product> products = new ArrayList<>();
-		Product product = new Product("vve","fvefvr","fevf",73653);
-		Product product2 = new Product("mia","fvefvr","fevf",73653);
-		products.add(product);
-		Date date = new Date();
-		Order o = new Order( UUID.randomUUID().toString(),date,date,restaurant.getClients().get(1),restaurant, products);
-		System.out.println("el estado del producto es "+o.getStatus() );
-		o.setStatus(Status.DELIVERED);
-		System.out.println("el estado del producto es " +o.getStatus());
-		o.setStatus(Status.IN_PROCESS);
-		System.out.println("el estado del producto es " +o.getStatus());
-		
-		restaurant.addOrder(o);
-		restaurant.addProducts(product);
-		
-		System.out.println("el restaurante buscado es:" +restaurant.searchtProduct(product2.getCod()));
-		System.out.println("productos"+restaurant.getOrders().get(0).getProducts());
-		
-		RestaurantAssociation ra = new RestaurantAssociation();
-		
-		Restaurant r1 = new Restaurant("123", "ABC", "fgh");
-		Restaurant r2 = new Restaurant("123", "ABB", "fgh");
-		Restaurant r3 = new Restaurant("123", "ACB", "fgh");
-		Restaurant r4 = new Restaurant("123", "AFS", "fgh");
-		Restaurant r5 = new Restaurant("123", "ABB", "fgh");
-		Restaurant r6 = new Restaurant("123", "ACC", "fgh");
-		
-		ra.addRestaurant(r1);
-		ra.addRestaurant(r2);
-		ra.addRestaurant(r3);
-		ra.addRestaurant(r4);
-		ra.addRestaurant(r5);
-		ra.addRestaurant(r6);
-		
-		
-		
-
-	
+			}
+		} while(option!=EXIT_OPTION);
 	}
-	
 }
