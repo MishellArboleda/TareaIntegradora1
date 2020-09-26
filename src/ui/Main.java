@@ -9,6 +9,7 @@ import model.Client;
 import model.Order;
 import model.Product;
 import model.Restaurant;
+import model.RestaurantAssociation;
 import model.Status;
 
 public class Main {
@@ -66,6 +67,27 @@ public class Main {
 		
 		System.out.println("el restaurante buscado es:" +restaurant.searchtProduct(product2.getCod()));
 		System.out.println("productos"+restaurant.getOrders().get(0).getProducts());
+		
+		RestaurantAssociation ra = new RestaurantAssociation();
+		
+		Restaurant r1 = new Restaurant("123", "ABC", "fgh");
+		Restaurant r2 = new Restaurant("123", "ABB", "fgh");
+		Restaurant r3 = new Restaurant("123", "ACB", "fgh");
+		Restaurant r4 = new Restaurant("123", "AFS", "fgh");
+		Restaurant r5 = new Restaurant("123", "ABB", "fgh");
+		Restaurant r6 = new Restaurant("123", "ACC", "fgh");
+		
+		ra.addRestaurant(r1);
+		ra.addRestaurant(r2);
+		ra.addRestaurant(r3);
+		ra.addRestaurant(r4);
+		ra.addRestaurant(r5);
+		ra.addRestaurant(r6);
+		
+		
+		
+
+	
 	}
 	
 }

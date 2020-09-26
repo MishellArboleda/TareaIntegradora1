@@ -152,10 +152,10 @@ public class Restaurant {
 		while(line!=null) {
 			String[] parts = line.split(separator);
 			String cod = parts[0];
-			String nombre = parts[1];
+			String name = parts[1];
 		    String description = parts[2];
 			double cost = Double.parseDouble(parts[3]);
-			Product product1 = new Product(cod,nombre,description,cost);
+			Product product1 = new Product(cod,name,description,cost);
 			addProducts(product1);
 			line = br.readLine();
 		}
@@ -257,6 +257,38 @@ public class Restaurant {
 		orders.add(o);
 		
 	}
+	public ArrayList<Client> insercionSortByPhoneNumbers( ){
+		ArrayList<Client> clientsByNumbers = clients;
+		for( int i = 0; i < clientsByNumbers.size() - 1; i++ )
+		{
+			Client menor = clientsByNumbers.get(i);
+			int cual = i;
+			for( int j = i + 1; j < clientsByNumbers.size(); j++ )
+			{
+				if( clientsByNumbers.get(j).getPhone_number().compareTo(clientsByNumbers.get(i).getPhone_number())== -1){
+					clientsByNumbers.add(j,menor); //menor = arreglo[ j ];
+					cual = j;
+				}
+			}
+			Client temp = clientsByNumbers.get(i); //int temp = arreglo[ i ];
+			clientsByNumbers.add(i, menor);   //arreglo[ i ] = menor;
+			clientsByNumbers.add(cual, temp);  //arreglo[ cual ] = temp;
+		}
+		return clientsByNumbers;
+	}
+
+
+	
+	
+	
+	//Restaurant temp = restaurantByName.get(j);             //int temp = arreglo[ j ];
+	//restaurantByName.add(j,restaurantByName.get(j+1));     //arreglo[ j ] = arreglo[ j + 1 ];
+	//restaurantByName.add(j+1,temp);                        //arreglo[ j + 1 ] = temp; 
+	
+	
+	
+	
+	
 }
 
 
