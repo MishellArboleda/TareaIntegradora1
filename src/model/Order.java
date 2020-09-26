@@ -5,11 +5,10 @@ import java.util.Date;
 import java.util.UUID;
 
 public class Order {
-	private String order_code;
+	private int order_code;
 	private Date date;
-	private Date time;
-	private Client id_client;
-	private Restaurant nit_restaurant;
+	private String id_client;
+	private String nit_restaurant;
 	private ArrayList<Product> products;
 	private Status status;
 	
@@ -17,11 +16,10 @@ public class Order {
 	}
 	
 
-	public Order(String code,Date date, Date time, Client id_client, Restaurant nit_restaurant,
+	public Order(int code,Date date, String id_client, String nit_restaurant,
 			ArrayList<Product> products) {
 		this.order_code = code;
 		this.date = date;
-		this.time = time;
 		this.id_client = id_client;
 		this.nit_restaurant = nit_restaurant;
 		this.products = products;
@@ -36,27 +34,19 @@ public class Order {
 		this.date = date;
 	}
 
-	public Date getTime() {
-		return time;
-	}
-
-	public void setTime(Date time) {
-		this.time = time;
-	}
-
-	public Client getId_client() {
+	public String getId_client() {
 		return id_client;
 	}
 
-	public void setId_client(Client id_client) {
+	public void setId_client(String id_client) {
 		this.id_client = id_client;
 	}
 
-	public Restaurant getNit_restaurant() {
+	public String getNit_restaurant() {
 		return nit_restaurant;
 	}
 
-	public void setNit_restaurant(Restaurant nit_restaurant) {
+	public void setNit_restaurant(String nit_restaurant) {
 		this.nit_restaurant = nit_restaurant;
 	}
 
@@ -72,7 +62,7 @@ public class Order {
 		return status;
 	}
 	
-	public String getOrder_code() {
+	public int getOrder_code() {
 		return order_code;
 	}
 	
@@ -93,10 +83,10 @@ public class Order {
 		}
 	}
 
-	public static Order getOrder(String order_code,ArrayList<Order> orders) {
+	public static Order getOrder(int order_code,ArrayList<Order> orders) {
 		Order o = new Order();
 		for (Order my_order : orders) {
-			if (my_order.order_code.equals(order_code)) {
+			if (my_order.order_code == order_code) {
 				o = my_order;
 				return o;
 			}
@@ -104,8 +94,8 @@ public class Order {
 		return o;
 	}
 	
-	public static Order updateOrder(String order_code, Date date, Date time, Client id_client,
-			Restaurant nit_restaurant, ArrayList<Product> products, Status status, 
+	public static Order updateOrder(int order_code, Date date,  String id_client,
+			String nit_restaurant, ArrayList<Product> products, Status status, 
 			ArrayList<Order> orders) {
 		Order o = getOrder(order_code, orders);
 		o.setDate(date);
@@ -113,7 +103,6 @@ public class Order {
 		o.setNit_restaurant(nit_restaurant);
 		o.setProducts(products);
 		o.setStatus(status);
-		o.setTime(time);
 		return o;
 		
 	}
