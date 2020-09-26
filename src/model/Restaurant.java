@@ -44,36 +44,26 @@ public class Restaurant {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public static void setName(String name) {
+		name = name;
 	}
 
 	public String getAdmin_name() {
 		return admin_name;
 	}
 
-	public void setAdmin_name(String admin_name) {
-		this.admin_name = admin_name;
+	public static void setAdmin_name(String admin_name) {
+		admin_name = admin_name;
 	}
 
-	public static Restaurant getRestaurant(String nit, ArrayList<Restaurant> restaurants) {
-		Restaurant r = new Restaurant();
-		for (Restaurant restaurant : restaurants) {
-			if (restaurant.nit.equals(nit)) {
-				return r = restaurant;
-			}
-		}
-		return r;
-	}
+	
 
-	public static Restaurant updateRestaurant(String nit, String name, String admin_name,
-			ArrayList<Restaurant> restaurants) {
-		Restaurant r = getRestaurant(nit, restaurants);
-		r.setName(name);
-		r.setAdmin_name(admin_name);
-		return r;
+	public static void updateRestaurant(String name, String admin_name) {
+		setName(name);
+		setAdmin_name(admin_name);
+		
 	}
-
+	
 	public ArrayList<Product> getProducts() {
 		return products;
 	}
@@ -104,7 +94,7 @@ public class Restaurant {
 		}
 	}
 	
-	public boolean searchtProduct(String cod) {
+	public boolean searchProduct(String cod) {
 		boolean encontre = false;
 		int inicio = 0;
 		int fin = products.size() - 1;
@@ -126,7 +116,7 @@ public class Restaurant {
 	public void addProducts(Product product){
 		if(products.size() == 0){
 			products.add(product);
-		}else if(searchtProduct(product.getCod()) == false) {
+		}else if(searchProduct(product.getCod()) == false) {
 			products.add(product);
 		}
 	}
@@ -219,7 +209,7 @@ public class Restaurant {
 
 		PrintWriter pw = new PrintWriter(fileName);
 		for(Order order:orders) {
-			pw.println(order.getOrder_code()+ separator + order.getTime() + separator+ order.getDate() + separator+ 
+			pw.println(order.getOrder_code()+ separator + separator+ order.getDate() + separator+ 
 			order.getId_client()+separator+ order.getNit_restaurant()+separator+order.getProducts());
 		}
 		pw.close();

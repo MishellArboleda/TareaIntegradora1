@@ -11,7 +11,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class RestaurantAssociation {
-	private static  ArrayList<Restaurant> restaurants;
+	private static ArrayList<Restaurant> restaurants;
 	
 	public RestaurantAssociation (){		
 	}
@@ -81,9 +81,17 @@ public final static String SAVE_PATH_RESTAUTANT = "data/restaurant.txt";
 		return restaurantByName;
 	}
 
-	
-
-
+	public  int searchRestaurantByNit(String nit) {
+		int index = -1;
+		int bound = restaurants.size();
+		for ( int i = 0; i < bound; i++) {
+			if (restaurants.get(i).equals(nit)) {
+				index = i;
+				break;
+			}
+		}
+		return index;
+	}
 
 
 }

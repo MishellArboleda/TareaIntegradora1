@@ -101,8 +101,7 @@ public class Main {
 			case 5:
 				System.out.println("enter the nit of the restaurant to update: "  );
 				String nit2 = sc.nextLine();
-				Restaurant r2 = new Restaurant();
-				System.out.println("the restaurant to update is: " +r2.getName() + "with the nit" + r2.getNit());
+				System.out.println("the restaurant to update is: " +nit2.getName() + "with the nit" + r2.getNit());
 				System.out.print("Nit: ");
 				String nit3 = sc.nextLine();
 				System.out.println("Name: "); 
@@ -169,9 +168,11 @@ public class Main {
 				System.out.println("The order with the code: " + o4.getOrder_code() + " has been successfully registered");
 				break;
 			}
-			
-			
-			
+
+
+
 		} while(option!=EXIT_OPTION);
-	}
+		sc.close();
+	} 
+	
 }
